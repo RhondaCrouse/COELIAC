@@ -1,34 +1,36 @@
+const asyncHandler = require('express-async-handler');
+
 // @desc    Get coeliacs
 // @route   GET /api/coeliacs
 // @access  Private
-const getCoeliacs = (req, res) => {
+const getCoeliacs = asyncHandler(async (req, res) => {
   res.status(200).json({ message: 'Get coeliacs' });
-};
+});
 
 // @desc    Set coeliacs
 // @route   POST /api/coeliacs
 // @access  Private
-const setCoeliac = (req, res) => {
+const setCoeliac = asyncHandler(async (req, res) => {
   if (!req.body.text) {
     res.status(400);
     throw new Error('Please add a text field');
   }
   res.status(200).json({ message: 'Set coeliacs' });
-};
+});
 
 // @desc    Update coeliac
 // @route   PUT /api/coeliacs/:id
 // @access  Private
-const updateCoeliac = (req, res) => {
+const updateCoeliac = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Update goal ${req.params.id}` });
-};
+});
 
 // @desc    delete coeliac
 // @route   DELETE /api/coeliacs/:id
 // @access  Private
-const deleteCoeliac = (req, res) => {
+const deleteCoeliac = asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Delete goal ${req.params.id}` });
-};
+});
 
 module.exports = {
   getCoeliacs,
