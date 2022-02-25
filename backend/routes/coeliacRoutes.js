@@ -1,19 +1,13 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
+const {
+  getCoeliacs,
+  setCoeliac,
+  updateCoeliac,
+  deleteCoeliac,
+} = require('../controllers/coeliacController');
 
-router.get('/', (req, res) => {
-    res.status(200).json({ message: "Get coeliacs"});
-  });
+router.route('/').get(getCoeliacs).post(setCoeliac);
+router.route('/:id').put(updateCoeliac).delete(deleteCoeliac);
 
-  router.post('/', (req, res) => {
-    res.status(200).json({ message: "Set coeliacs"});
-  });
-
-  router.put('/:id', (req, res) => {
-    res.status(200).json({ message: `Update goal ${req.params.id}` });
-  });
-
-  router.delete('/:id', (req, res) => {
-    res.status(200).json({ message: `Delete goal ${req.params.id}` });  });
-
-module.exports = router
+module.exports = router;
