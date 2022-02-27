@@ -1,5 +1,7 @@
 const asyncHandler = require('express-async-handler');
 
+const Coeliac = require('../models/coeliacModel');
+
 // @desc    Get coeliacs
 // @route   GET /api/coeliacs
 // @access  Private
