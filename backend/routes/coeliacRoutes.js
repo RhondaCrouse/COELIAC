@@ -7,7 +7,9 @@ const {
   deleteCoeliac,
 } = require('../controllers/coeliacController');
 
-router.route('/').get(getCoeliacs).post(setCoeliac);
-router.route('/:id').put(updateCoeliac).delete(deleteCoeliac);
+const { protect } = require('../middleware/authMiddleware');
+
+router.route('/').get(protect, getCoeliacs).post(protect, setCoeliac);
+router.route('/:id').delete(protect, updateCoeliac).put(protect, updateCoeliac);
 
 module.exports = router;
